@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.portfolio {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #f7f7f5;
+    color: #171717;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* NAVBAR */
+
+.navbar {
+    height: 90px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+    /* Supaya area kosong navbar tembus saat drag kotak */
+}
+
+.navbar a,
+.navbar button {
+    pointer-events: auto;
+    /* Link menu & tombol Unduh CV tetap bisa diklik */
+}
+
+.brand {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #111;
+    text-decoration: none;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 34px;
+}
+
+.navbar nav a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.navbar nav a.active {
+    color: #111;
+    border-bottom: 1px solid #111;
+    padding-bottom: 5px;
+}
+
+.cv-button,
+.primary-button {
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 13px 24px;
+    cursor: pointer;
+}
+
+.cv-button {
+    font-size: 13px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: calc(100vh - 145px);
+    display: flex;
+    align-items: center;
+    padding: 40px 5% 80px;
+    position: relative;
+}
+
+.hero-content {
+    width: 48%;
+    z-index: 2;
+    pointer-events: none;
+    /* Supaya kursor tetap bisa drag kotak saat lewat di belakang teks */
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #777;
+}
+
+.hero-content h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(54px, 6.5vw, 92px);
+    font-weight: 600;
+    /* Bisa dicoba 400 (Regular), 500 (Medium), atau 600 (SemiBold) */
+    line-height: 1.05;
+    margin: 35px 0;
+}
+
+.hero-content h2 {
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.hero-content h2::before {
+    content: "";
+    display: inline-block;
+    width: 35px;
+    height: 1px;
+    background: #333;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.hero-content p {
+    max-width: 390px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.hero-actions button {
+    pointer-events: auto;
+    /* Supaya tombol tetap bisa diklik */
+}
+
+.primary-button,
+.secondary-button {
+    font-size: 13px;
+    padding: 14px 24px;
+}
+
+.secondary-button {
+    border: 1px solid #222;
+    border-radius: 30px;
+    background: transparent;
+    color: #111;
+    cursor: pointer;
+}
+
+/* 3D AREA */
+
+/* 3D AREA */
+
+.hero-3d {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: -90px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    /* Di belakang navbar (z-index: 5) dan teks hero (z-index: 2) */
+}
+
+.hero-3d canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.drag-hint {
+    position: absolute;
+    right: 12%;
+    bottom: 8%;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: white;
+    padding: 12px 17px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px #00000012;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.hint-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #111;
+}
+
+/* FOOTER */
+
+.hero-footer {
+    position: absolute;
+    bottom: 28px;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    justify-content: space-between;
+    color: #777;
+    font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+/* RESPONSIVE (HP & Tablet) */
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 70px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: calc(100vh - 70px);
+        padding: 20px 6% 40px;
+        align-items: flex-start;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(42px, 12vw, 56px);
+        margin: 18px 0;
+    }
+
+    .hero-content h2 {
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .hero-actions {
+        margin-top: 20px;
+    }
+
+    .hero-3d {
+        width: 100%;
+        height: 100vh;
+        top: -70px;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        transform: none;
+    }
+
+    .drag-hint {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 24px;
+        white-space: nowrap;
+    }
+
+    .hero-footer {
+        display: none;
+    }
+}
